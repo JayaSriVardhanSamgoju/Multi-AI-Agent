@@ -17,9 +17,13 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Add Jenkins user to the Docker group (create if it doesn't exist)
+# Add Jenkins user to the Docker group (create if it doesn't exist) and grant sudo privileges
 RUN groupadd -f docker && \
-    usermod -aG docker jenkins
+    usermod -aG docker jenkins && \
+    apt-get update -y && \
+    apt-get install -y sudo && \
+    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create the Docker directory and volume for DinD
 RUN mkdir -p /var/lib/docker
