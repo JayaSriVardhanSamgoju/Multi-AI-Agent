@@ -1,13 +1,13 @@
 pipeline{
     agent any
 
-   /* environment {
+    environment {
         SONAR_PROJECT_KEY = 'LLMOPS'
-        SONAR_SCANNER_HOME = tool 'Sonarqube'
-        AWS_REGION = 'us-east-1'
+        SONAR_SCANNER_HOME = tool 'SonarQube'
+        /*AWS_REGION = 'us-east-1'
         ECR_REPO = 'my-repo'
-        IMAGE_TAG = 'latest'
-   } */
+        IMAGE_TAG = 'latest'*/
+   } 
 
     stages{
         stage('Cloning Github repo to Jenkins'){
@@ -19,7 +19,7 @@ pipeline{
             }
         }
 
-   /* stage('SonarQube Analysis'){
+   /stage('SonarQube Analysis'){
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('Sonarqube') {
@@ -35,7 +35,7 @@ pipeline{
             }
         }
 
-        stage('Build and Push Docker Image to ECR') {
+        /* stage('Build and Push Docker Image to ECR') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-token']]) {
                     script {
