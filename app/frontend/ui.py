@@ -209,7 +209,7 @@ with st.sidebar:
     # Model Selector
     model_choice = st.selectbox(
         "🧠 Select Groq LLM",
-        options=["llama-3.3-70b-versatile", "llama-3.1-8b-instant"],
+        options=["llama-3.1-8b-instant", "llama-3.1-70b-versatile", "llama-3.3-70b-versatile", "llama3-70b-8192", "mixtral-8x7b-32768"],
         index=0,
         help="Select the AI brain model for your request."
     )
