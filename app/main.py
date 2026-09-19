@@ -17,7 +17,7 @@ def run_backend():
         logger.info("Starting backend service (FastAPI on http://127.0.0.1:8000)...")
         uvicorn.run("app.backend.api:app", host="127.0.0.1", port=8000, reload=False)
     except Exception as e:
-        logger.error(f"Failed to start backend service: {CustomException('Error starting backend service', e)}")
+        logger.exception(f"Failed to start backend service: {CustomException('Error starting backend service', e)}")
 
 
 def run_frontend():
@@ -25,7 +25,7 @@ def run_frontend():
         logger.info("Starting frontend service (Streamlit on http://127.0.0.1:8501)...")
         subprocess.run([sys.executable, "-m", "streamlit", "run", "app/frontend/ui.py", "--server.port", "8501"])
     except Exception as e:
-        logger.error(f"Failed to start frontend service: {CustomException('Error starting frontend service', e)}")
+        logger.exception(f"Failed to start frontend service: {CustomException('Error starting frontend service', e)}")
 
 
 if __name__ == "__main__":
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logger.info("Shutting down Multi-AI Agent services...")
     except Exception as e:
-        logger.error(f"Failed to start services: {CustomException('Error starting services', e)}")
+        logger.exception(f"Failed to start services: {CustomException('Error starting services', e)}")
