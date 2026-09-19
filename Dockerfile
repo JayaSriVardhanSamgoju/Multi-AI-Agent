@@ -14,10 +14,12 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-## Copying ur all contents from local to app
-COPY . .
+## Copy setup files and install dependencies
+COPY requirements.txt setup.py ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-## Run setup.py
+## Copy application source code
+COPY app/ ./app/
 RUN pip install --no-cache-dir -e .
 
 # Used PORTS
