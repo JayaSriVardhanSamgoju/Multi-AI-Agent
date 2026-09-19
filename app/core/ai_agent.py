@@ -14,7 +14,7 @@ def get_response_from_ai_agents(llm_id: str, query: list[str] | str, allow_searc
     agent = create_react_agent(
         model=llm,
         tools=tools,
-        state_modifier=system_prompt,
+        prompt=system_prompt,
     )
 
     # Convert raw strings into HumanMessage objects for LangGraph compatibility
