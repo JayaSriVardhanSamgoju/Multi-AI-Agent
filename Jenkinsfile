@@ -53,7 +53,7 @@ pipeline{
             }
         }
 
-        stage('Deploy to ECS Fargate') {
+       /* stage('Deploy to ECS Fargate') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-token']]) {
                     script {
@@ -67,6 +67,6 @@ pipeline{
                     }
                 }
             }
-        } 
+        } */ 
     }
 }
